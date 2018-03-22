@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,7 +25,7 @@ public class UserInterface {
 		northPanelCreator(frame);
 		centerPanelCreator(frame);
 		southPanelCreator(frame);
-		ButtonListeners btnListeners = new ButtonListeners(btn_upload, btn_analyze, btn_save, btn_exit, txt_fileName);
+		ButtonListeners btnListeners = new ButtonListeners(btn_upload, btn_analyze, btn_save, btn_exit, txt_fileName, txt_output);
 	}
 	
 	public JFrame initialize(){
@@ -55,13 +56,10 @@ public class UserInterface {
 		JLabel lbl_step1 = new JLabel("Step 1. ");
 		JLabel lbl_step2 = new JLabel("Step 2. ");
 		JLabel lbl_upload = new JLabel("Upload your file here:");
-		JLabel lbl_analyze = new JLabel("Start Analyzing.");
-		JLabel lbl_output = new JLabel("Output:");
 		
 		btn_upload = new JButton("Upload");
 		btn_analyze = new JButton("Analyze");
 		btn_remove = new JButton("Cancel");
-		
 		
 		txt_fileName = new JTextField(40);
 		txt_fileName.setEditable(false);
@@ -78,9 +76,7 @@ public class UserInterface {
 		centerPanel.add(btn_upload);
 		centerPanel.add(btn_remove);
 		centerPanel.add(lbl_step2);
-		centerPanel.add(lbl_analyze);
 		centerPanel.add(btn_analyze);
-		centerPanel.add(lbl_output);
 		centerPanel.add(scroll_output);
 
 		frame.add(centerPanel, BorderLayout.CENTER);

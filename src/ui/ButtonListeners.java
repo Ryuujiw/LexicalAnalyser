@@ -14,31 +14,39 @@ import javax.swing.JTextField;
 
 public class ButtonListeners implements ActionListener {
 	
-	private JButton btn_save, btn_exit, btn_upload, btn_analyze;
+	private JButton btn_save, btn_exit, btn_upload, btn_analyzeLexical, btn_analyzeSyntax, btn_cancel;
 	private JTextField txt_fileName;
-	private JTextArea txt_output;
+	private JTextArea txt_outputLexical, txt_outputSyntax;
 	private JFileChooser fileChooser;
 	private File sourceCode;
 
 	public ButtonListeners(JButton btn_upload, 
-						   JButton btn_analyze, 
+						   JButton btn_analyzeLexical,
+						   JButton btn_analyzeSyntax,
 						   JButton btn_save, 
 						   JButton btn_exit, 
+						   JButton btn_cancel,
 						   JTextField txt_fileName,
-						   JTextArea txt_output){
+						   JTextArea txt_outputLexical,
+						   JTextArea txt_outputSyntax){
 		
 		this.btn_upload = btn_upload;
-		this.btn_analyze = btn_analyze;
+		this.btn_analyzeLexical = btn_analyzeLexical;
+		this.btn_analyzeSyntax = btn_analyzeSyntax;
 		this.btn_exit = btn_exit;
 		this.btn_save = btn_save;
+		this.btn_cancel = btn_cancel;
 		
 		this.txt_fileName = txt_fileName;
-		this.txt_output = txt_output;
+		this.txt_outputLexical = txt_outputLexical;
+		this.txt_outputSyntax = txt_outputSyntax;
 		
 		btn_upload.addActionListener(this);
-		btn_analyze.addActionListener(this);
+		btn_analyzeLexical.addActionListener(this);
+		btn_analyzeSyntax.addActionListener(this);
 		btn_exit.addActionListener(this);
 		btn_save.addActionListener(this);
+		btn_cancel.addActionListener(this);
 	}
 
 	@Override
@@ -60,13 +68,17 @@ public class ButtonListeners implements ActionListener {
 			}
 		}
 		
-		else if(obj == btn_analyze){
+		else if(obj == btn_analyzeLexical){
 			//assignment 2
+		}
+		
+		else if(obj == btn_analyzeSyntax){
+			//assignment2
 		}
 		
 		else if(obj == btn_save){
 			//assignment 2
-			String output = "hi"; //txt_output.getText(); //get output from txt_output
+			String output = ""; //txt_outputLexical/Syntax.getText(); //get output from txt_output
 			fileChooser = new JFileChooser();
 			fileChooser.setDialogTitle("Save as..");
 			
@@ -89,6 +101,11 @@ public class ButtonListeners implements ActionListener {
 		
 		else if(obj == btn_exit){
 			System.exit(0);
+		}
+		
+		else if(obj == btn_cancel){
+			sourceCode = null;
+			txt_fileName.setText("");
 		}
 		
 	}
